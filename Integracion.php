@@ -9,6 +9,7 @@
         "Luis" => 670,
         "Laura" => 980,
     ];
+    $opcion = 3;
     $totaljugadores = 0;
     $jugadoresexpertos = 0;
     $puntuacionmedia = 0;
@@ -66,10 +67,45 @@
     echo "<p>Entre 800 y 999 puntos →  $entre800y999</p>";
     echo "<p>Más de 1000 puntos →  $mas1000</p>";
     echo "----------------------------------------";
-    echo "<p>1. Mostrar jugadores</p>";
-    echo "<p>2. Mostrar estadísticas</p>";
-    echo "<p>3. Mostrar clasificación</p>";
-    echo "<p>4. Salir</p>";
+    echo "<h2>Menú</h2>";
+    switch ($opcion) {
+        case 1:
+            asort($puntosjugador);
+            echo "<p>Opción 1 seleccionada</p>";
+            echo "<h2>Jugadores ordenados por puntuación (de menor a mayor)</h2>";
+            foreach ($puntosjugador as $jugador => $puntos){
+                echo "<h3>Jugador: $jugador</h3>";
+                echo "<p>Puntos: $puntos</p>";
+            }
+            break;
+        case 2:
+            echo "<p>Opción 2 seleccionada</p>";
+            echo "<h2>Estadísticas del torneo:</h2>";
+            echo "<p>Total de jugadores → $totaljugadores</p>";
+            $puntuacionmedia = $puntuacionmedia / $totaljugadores;
+            echo "<p>Media de puntuación → $puntuacionmedia</p>";
+            echo "<p>Total de jugadores con más de 500 puntos → $jugadorconmasde500</p>";
+            echo "<p>El jugador con puntuación más alta es → $nombrejugadorconmaspuntos con $puntuacionmasalta puntos</p>";
+            echo "<p>El jugador con puntuación más baja tiene → $puntuacionmasbaja puntos</p>";
+            echo "<p>Total de jugadores expertos (más de 1000 puntos) → $jugadoresexpertos</p>";
+            break;
+        case 3:
+            echo "<p>Opción 3 seleccionada</p>";
+            echo "Clasificación del torneo";
+            arsort($puntosjugador);
+            $puesto = 1;
+            foreach ($puntosjugador as $jugador => $puntos){
+                echo "El jugador que finalizó en el puesto $puesto es: $jugador con $puntos puntos.";
+                $puesto++;
+            }
+            break;
+        case 4:
+            echo "<p>Opcion 4 seleccionada</p>";
+            echo "<p>Salir del menú</p>";
+            break;
+        default:
+            echo "<p>Opción no válida</p>";
+    }
     ?>
 </body>
 </html>
