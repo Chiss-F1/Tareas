@@ -63,7 +63,9 @@
             echo "<h4>$localidad tiene: Temperatura muy alta</h4>";
         }
     }
+
     function resumen($totallocalidades, $tempertaturatotal, $localidadesconmasde23, $nombrelocalidadconmastemperatura, $temperaturamasalta, $nombrelocalidadconmenostemperatura, $temperaturamasbaja, $entre18y23, $entre23y27, $mas27) {
+    global $totallocalidades, $tempertaturatotal, $localidadesconmasde23, $nombrelocalidadconmastemperatura, $temperaturamasalta, $nombrelocalidadconmenostemperatura, $temperaturamasbaja, $entre18y23, $entre23y27, $mas27;
         echo "<h2>Resumen</h2>";
         echo "<p>Total de localidades → $totallocalidades</p>";
         $temperaturamedia = $tempertaturatotal / $totallocalidades;
@@ -76,6 +78,7 @@
         echo "<p>Total de localidades con temperatura entre 23°C y 27°C → $entre23y27</p>";
         echo "<p>Total de localidades con temperatura mayor a 27°C → $mas27</p>";
     }
+    
     function mostrarLocalidades($temperaturas) {
         foreach ($temperaturas as $localidad => $temperatura){
             echo "<h3>Localidad: $localidad</h3>";
